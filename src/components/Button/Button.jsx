@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { BiPlusMedical } from 'react-icons/bi';
 
-function Button({ onNextFetch }) {
+function Button({ loadMore }) {
   return (
-    <button type="button" onClick={onNextFetch}>
+    <button type="button" onClick={loadMore}>
       Load more <BiPlusMedical />
     </button>
   );

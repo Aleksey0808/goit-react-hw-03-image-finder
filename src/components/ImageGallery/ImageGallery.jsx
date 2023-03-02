@@ -4,12 +4,12 @@ import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 function ImageGallery({ images, openModal }) {
   return (
     <ul>
-      {images.map(({ id, description, smallImage, largeImage }) => (
+      {images.map(({ id, tags, webformatURL, largeImageURL }) => (
         <ImageGalleryItem
           key={id}
-          description={description}
-          smallImage={smallImage}
-          largeImage={largeImage}
+          description={tags}
+          smallImage={webformatURL}
+          largeImage={largeImageURL}
           openModal={openModal}
         />
       ))}

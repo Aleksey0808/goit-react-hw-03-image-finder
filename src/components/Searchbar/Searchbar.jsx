@@ -1,32 +1,14 @@
 import PropTypes from 'prop-types';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-// import * as yup from 'yup';
+import * as yup from 'yup';
 
-// const schema = yup.object().shape({
-//   onSubmit: yup.func().required(),
-// });
+const schema = yup.object().shape({
+  query: yup.string().required(),
+});
 
 const Searchbar = ({ onSubmit }) => {
-  // const onChangeInput = e => {
-  //   this.setState({ query: e.currentTarget.value });
-  // };
-
-  // const onSubmitForm = e => {
-  //   e.preventDefault();
-
-  //   const { onSubmit } = this.props;
-  //   const { query } = this.state;
-
-  //   if (query.trim() === '') {
-  //     toast.error('Enter a search term.');
-  //     return;
-  //   }
-
-  //   onSubmit(query);
-  // };
-
-  const handleSubmit = (values, { resetForm }) => {
-    onSubmit(values);
+  const handleSubmit = (query, { resetForm }) => {
+    onSubmit(query);
     resetForm();
   };
 
@@ -38,7 +20,7 @@ const Searchbar = ({ onSubmit }) => {
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
-      // validationSchema={schema}
+      validationSchema={schema}
     >
       <Form>
         <label>
@@ -46,7 +28,7 @@ const Searchbar = ({ onSubmit }) => {
           <ErrorMessage name="query" component="div" />
         </label>
 
-        <button type="submit">Add contact</button>
+        <button type="submit">Search</button>
       </Form>
     </Formik>
   );
