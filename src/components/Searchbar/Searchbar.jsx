@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import * as yup from 'yup';
-import styled from '@emotion/styled';
 import { Forma, Label, Input, Button, ErrorText } from './Searchbar.styled';
 
 const schema = yup.object().shape({
