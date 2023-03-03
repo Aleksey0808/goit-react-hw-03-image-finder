@@ -3,13 +3,32 @@ import 'modern-normalize';
 
 injectGlobal`
   * {
-    body {
+    html {
+  box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
+}
+body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  color: #212121;
+  background-color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
     box-sizing: border-box;
     ul,
@@ -18,6 +37,7 @@ injectGlobal`
       margin: 0;
       padding: 0;
     }
+
     h1,
     h2,
     h3,
@@ -28,6 +48,7 @@ injectGlobal`
       margin: 0;
       padding: 0;
     }
+
   }
   @font-face {
     font-family: 'Patrick Hand SC';

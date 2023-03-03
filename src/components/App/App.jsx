@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import Modal from './Modal/Modal';
-import Searchbar from './Searchbar/Searchbar';
-import ImageGallery from './ImageGallery';
-import Loader from './Loader';
-import Button from './Button';
-import apiService from './PixabayApi';
+import Modal from '../Modal/Modal';
+import Searchbar from '../Searchbar/Searchbar';
+import ImageGallery from '../ImageGallery';
+import Loader from '../Loader';
+import Button from '../Button';
+import apiService from '../../PixabayApi';
+import { Container } from './App.styles';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export class App extends Component {
   state = {
@@ -39,15 +42,19 @@ export class App extends Component {
   async fetchQuery(query, page) {
     try {
       const api = await apiService(query, page);
-      console.log(api.hits);
+
       console.log(this.state.currentImageDescription);
 
       const total = api.totalHits;
       const images = api.hits;
       const picsLeft = total - 12 * this.state.page;
-
+      console.log(query);
+      // if (this.state.query)
       if (images.length === 0) {
         this.setState({ showLoadMoreBtn: false });
+        toast.error(`Nothing found for your request`, {
+          autoClose: 1500,
+        });
 
         return;
       } else {
@@ -57,13 +64,16 @@ export class App extends Component {
       }
 
       if (images.length > 0 && this.state.page === 1) {
+        toast.info(`Found ${api.total} images for your requestё`, {
+          autoClose: 1500,
+        });
       }
 
       picsLeft > 0
         ? this.setState({ showLoadMoreBtn: true })
         : this.setState({ showLoadMoreBtn: false });
     } catch (error) {
-      console.log(error);
+      toast.error('Enter a request!', { autoClose: 1500 });
     } finally {
       this.setState({ isLoading: false });
     }
@@ -79,17 +89,30 @@ export class App extends Component {
 
   onNextFetch = () => {
     this.setState(({ page }) => ({ page: page + 1 }));
-    console.log(this.state.page);
+    console.log('smoothScrolling');
+    this.smoothScrolling();
   };
 
   getSearchRequest = query => {
     this.setState({ query });
   };
 
+  smoothScrolling = () => {
+    const { height: cardHeight } = document
+      .querySelector('.css-ek240f')
+      .firstElementChild.getBoundingClientRect();
+
+    window.scrollBy({
+      top: cardHeight * 2,
+      behavior: 'smooth',
+    });
+  };
+
   render() {
     const { showModal } = this.state;
     return (
-      <div>
+      <Container>
+        <ToastContainer />
         {showModal && (
           <Modal
             onClose={this.toggleModal}
@@ -98,14 +121,16 @@ export class App extends Component {
           />
         )}
         <Searchbar onSubmit={this.getSearchRequest} />
+
         {this.state.images && (
           <ImageGallery
             images={this.state.images}
             openModal={this.toggleModal}
           />
         )}
+        {this.state.isLoading && <Loader />}
         {this.state.showLoadMoreBtn && <Button loadMore={this.onNextFetch} />}
-      </div>
+      </Container>
     );
   }
 }

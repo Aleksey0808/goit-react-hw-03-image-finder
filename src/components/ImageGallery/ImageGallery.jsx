@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
+import { List } from './ImageGallery.styled';
 
 function ImageGallery({ images, openModal }) {
   return (
-    <ul>
+    <List>
       {images.map(({ id, tags, webformatURL, largeImageURL }) => (
         <ImageGalleryItem
           key={id}
@@ -13,7 +14,7 @@ function ImageGallery({ images, openModal }) {
           openModal={openModal}
         />
       ))}
-    </ul>
+    </List>
   );
 }
 

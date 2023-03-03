@@ -1,10 +1,11 @@
 // import PropTypes from 'prop-types';
+import { Item, Image } from './imageGalleryItem.styled';
 
 function imageGalleryItem({ description, smallImage, largeImage, openModal }) {
   return (
-    <li onClick={() => openModal(largeImage, description)}>
-      <img src={smallImage} alt={description} data-large={largeImage} />
-    </li>
+    <Item onClick={() => openModal(largeImage, description)}>
+      <Image src={smallImage} alt={description} data-large={largeImage} />
+    </Item>
   );
 }
 

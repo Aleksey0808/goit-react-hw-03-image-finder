@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
-import { BiPlusMedical } from 'react-icons/bi';
+import { MdOutlineDownloading } from 'react-icons/md';
+import { Load } from './Button.styled';
 
 function Button({ loadMore }) {
   return (
-    <button type="button" onClick={loadMore}>
-      Load more <BiPlusMedical />
-    </button>
+    <Load type="button" onClick={loadMore}>
+      Load more <MdOutlineDownloading size={35} />
+    </Load>
   );
 }
 

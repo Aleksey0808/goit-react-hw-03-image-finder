@@ -1,10 +1,11 @@
-import { MdOutlineCameraswitch } from 'react-icons/md';
+import { AiOutlineFieldTime } from 'react-icons/ai';
+import { Load } from './Loader.styled';
 
 function Loader() {
   return (
-    <div>
-      <MdOutlineCameraswitch />
-    </div>
+    <Load>
+      <AiOutlineFieldTime size={50} />
+    </Load>
   );
 }
 

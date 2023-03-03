@@ -1,10 +1,21 @@
 import PropTypes from 'prop-types';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import styled from '@emotion/styled';
+import { Forma, Label, Input, Button, ErrorText } from './Searchbar.styled';
 
 const schema = yup.object().shape({
   query: yup.string().required(),
 });
+
+// const FormError = ({ name }) => {
+//   return (
+//     <ErrorMessage
+//       name={name}
+//       render={message => <ErrorText>{message}</ErrorText>}
+//     />
+//   );
+// };
 
 const Searchbar = ({ onSubmit }) => {
   const handleSubmit = (query, { resetForm }) => {
@@ -22,14 +33,14 @@ const Searchbar = ({ onSubmit }) => {
       onSubmit={handleSubmit}
       validationSchema={schema}
     >
-      <Form>
-        <label>
-          <Field type="text" name="query" />
-          <ErrorMessage name="query" component="div" />
-        </label>
+      <Forma>
+        <Label>
+          <Input type="text" name="query" />
+          <ErrorText name="query" component="div" />
+        </Label>
 
-        <button type="submit">Search</button>
-      </Form>
+        <Button type="submit">Search</Button>
+      </Forma>
     </Formik>
   );
 };
