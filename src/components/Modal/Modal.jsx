@@ -1,10 +1,14 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import { Backdrop, Content } from './Modak.styles';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export default class Modal extends Component {
+class Modal extends Component {
+  prototype = {
+    onClose: PropTypes.func.isRequired,
+  };
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown);
   }
@@ -43,3 +47,5 @@ export default class Modal extends Component {
     );
   }
 }
+
+export default Modal;

@@ -11,7 +11,7 @@ function Button({ loadMore }) {
 }
 
 Button.prototype = {
-  onNextFetch: PropTypes.func.isRequired,
+  loadMore: PropTypes.func.isRequired,
 };
 
 export default Button;

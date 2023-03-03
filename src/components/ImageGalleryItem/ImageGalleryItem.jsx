@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Item, Image } from './imageGalleryItem.styled';
 
 function imageGalleryItem({ description, smallImage, largeImage, openModal }) {
@@ -8,5 +8,13 @@ function imageGalleryItem({ description, smallImage, largeImage, openModal }) {
     </Item>
   );
 }
+
+imageGalleryItem.prototype = {
+  id: PropTypes.number.isRequired,
+  description: PropTypes.string,
+  smallImage: PropTypes.string.isRequired,
+  largeImage: PropTypes.string.isRequired,
+  openModal: PropTypes.func.isRequired,
+};
 
 export default imageGalleryItem;

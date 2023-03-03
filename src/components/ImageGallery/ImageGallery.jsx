@@ -18,4 +18,16 @@ function ImageGallery({ images, openModal }) {
   );
 }
 
+ImageGallery.prototype = {
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      tags: PropTypes.string,
+      webformatURL: PropTypes.string.isRequired,
+      largeImageURL: PropTypes.string.isRequired,
+    })
+  ),
+  openModal: PropTypes.func.isRequired,
+};
+
 export default ImageGallery;

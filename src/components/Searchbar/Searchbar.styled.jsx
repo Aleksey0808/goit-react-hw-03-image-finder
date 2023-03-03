@@ -55,4 +55,5 @@ export const Button = styled.button`
 
 export const ErrorText = styled(ErrorMessage)`
   color: red;
+  width: 200px;
 `;

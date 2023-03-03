@@ -5,17 +5,8 @@ import styled from '@emotion/styled';
 import { Forma, Label, Input, Button, ErrorText } from './Searchbar.styled';
 
 const schema = yup.object().shape({
-  query: yup.string().required(),
+  query: yup.string().required('Search string is required'),
 });
-
-// const FormError = ({ name }) => {
-//   return (
-//     <ErrorMessage
-//       name={name}
-//       render={message => <ErrorText>{message}</ErrorText>}
-//     />
-//   );
-// };
 
 const Searchbar = ({ onSubmit }) => {
   const handleSubmit = (query, { resetForm }) => {
