@@ -13,12 +13,9 @@ export class App extends Component {
   state = {
     query: '',
     page: 1,
-    imagesOnPage: 0,
-    totalImages: 0,
     isLoading: false,
     showModal: false,
     images: [],
-    error: null,
     currentImageUrl: null,
     currentImageDescription: null,
     showLoadMoreBtn: false,
@@ -39,17 +36,19 @@ export class App extends Component {
     this.setState({ query: query, page: 1, images: [] });
   };
 
-  async fetchQuery(query, page) {
+  async fetchQuery({ query }, page) {
     try {
       const api = await apiService(query, page);
-
-      console.log(this.state.currentImageDescription);
 
       const total = api.totalHits;
       const images = api.hits;
       const picsLeft = total - 12 * this.state.page;
-      console.log(query);
-      // if (this.state.query)
+
+      if (query.trim() === '') {
+        return toast.error(`Nothing found for your request`, {
+          autoClose: 1500,
+        });
+      }
       if (images.length === 0) {
         this.setState({ showLoadMoreBtn: false });
         toast.error(`Nothing found for your request`, {
@@ -90,22 +89,10 @@ export class App extends Component {
   onNextFetch = () => {
     this.setState(({ page }) => ({ page: page + 1 }));
     console.log('smoothScrolling');
-    this.smoothScrolling();
   };
 
   getSearchRequest = query => {
-    this.setState({ query });
-  };
-
-  smoothScrolling = () => {
-    const { height: cardHeight } = document
-      .querySelector('.css-ek240f')
-      .firstElementChild.getBoundingClientRect();
-
-    window.scrollBy({
-      top: cardHeight * 2,
-      behavior: 'smooth',
-    });
+    this.setState({ query, page: 1, images: [] });
   };
 
   render() {
