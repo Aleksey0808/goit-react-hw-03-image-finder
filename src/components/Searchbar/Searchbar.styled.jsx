@@ -36,14 +36,13 @@ export const Input = styled(Field)`
 `;
 
 export const Button = styled.button`
-  display: inline-block;
-  width: 80px;
-  height: 30px;
-  border: 0;
-  background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
-  background-size: 40%;
-  background-repeat: no-repeat;
-  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border: 1px solid black;
+  border-radius: 5px;
   opacity: 0.6;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
@@ -56,4 +55,8 @@ export const Button = styled.button`
 export const ErrorText = styled(ErrorMessage)`
   color: red;
   width: 200px;
+`;
+
+export const Text = styled.p`
+  margin-left: 5px;
 `;

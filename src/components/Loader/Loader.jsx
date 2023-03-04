@@ -1,10 +1,10 @@
-import { AiOutlineFieldTime } from 'react-icons/ai';
 import { Load } from './Loader.styled';
+import { InfinitySpin } from 'react-loader-spinner';
 
 function Loader() {
   return (
     <Load>
-      <AiOutlineFieldTime size={50} />
+      <InfinitySpin width="200" color="#4fa94d" />
     </Load>
   );
 }
