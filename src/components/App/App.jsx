@@ -8,6 +8,7 @@ import apiService from '../../PixabayApi';
 import { Container } from './App.styles';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { animateScroll as scroll } from 'react-scroll';
 
 export class App extends Component {
   state = {
@@ -88,7 +89,7 @@ export class App extends Component {
 
   onNextFetch = () => {
     this.setState(({ page }) => ({ page: page + 1 }));
-    console.log('smoothScrolling');
+    scroll.scrollToBottom();
   };
 
   getSearchRequest = query => {
