@@ -1,14 +1,7 @@
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import {
-  Forma,
-  Label,
-  Input,
-  Button,
-  ErrorText,
-  Text,
-} from './Searchbar.styled';
+import { Forma, Label, Input, Button, ErrorText } from './Searchbar.styled';
 // import { RxMagnifyingGlass } from 'react-icons/rx';
 import { MagnifyingGlass } from 'react-loader-spinner';
 
